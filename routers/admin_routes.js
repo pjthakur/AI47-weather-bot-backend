@@ -44,6 +44,15 @@ router.post('/update-api-key', authenticateToken, (req, res) => {
   res.send('API key updated');
 });
 
+//Get all users
+router.get('/all-users', async (req, res) => {
+  const users = await User.find({})
+  console.log(users)
+  // await User.findOneAndUpdate({ telegramId }, { subscribed: false });
+  res.send(users);
+});
+
+
 // Block user
 router.post('/block-user', authenticateToken, async (req, res) => {
   const { telegramId } = req.body;
