@@ -39,7 +39,7 @@ bot.onText(/\/stop/, async (msg) => {
 
 bot.onText(/\/weather/, async (msg) => {
     const chatId = msg.chat.id;
-    const user = await User.findOneAndUpdate({ telegramId: chatId });
+    const user = await User.findOne({ telegramId: chatId });
     if (user.subscribed) {
       try {
         const weather = await getWeather(); 
